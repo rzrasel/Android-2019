@@ -26,5 +26,15 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext {
-    extAppName = "Ansar"
+    extAppName = "Armor Pagination"
+    extCompileSdkVersion = 26
+    extBuildToolsVersion = '26.0.2'
+
+    extMinSdkVersion = 15
+    extTargetSdkVersion = 26
+    extVersionCode = 201803001
+    extVersionName = "201803.00.1"
+
+    supportLibraryVersion = '27.0.2'
+    playServicesVersion = '11.8.0'
 }
