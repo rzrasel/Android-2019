@@ -25,9 +25,9 @@ public class FragTest extends Fragment {
     //|------------------------------------------------------------|
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater argInflater, ViewGroup argContainer, Bundle argSavedInstanceState) {
         //|------------------------------------------------------------|
-        View rootView = inflater.inflate(R.layout.frag_test, container, false);
+        View rootView = argInflater.inflate(R.layout.frag_test, argContainer, false);
         //|------------------------------------------------------------|
         Bundle bundle = this.getArguments();
         if (bundle != null) {
