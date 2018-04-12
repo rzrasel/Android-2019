@@ -4,12 +4,97 @@
     android:layout_height="match_parent"
     android:background="@drawable/layout_viewpager_bg">
 
-    <TextView
-        android:id="@+id/idTextViewTest"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Test"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="6dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="2dp">
+
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-16dp"
+                    android:text="&#8226; "
+                    android:textColor="#fe0000"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/bullet_dot_one"
+                    android:drawablePadding="6dp"
+                    android:text="Header"
+                    android:textColor="#003a37" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#166f16" />
+        </LinearLayout>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shadow_one"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/name_of_division"
+            android:prompt="@string/hint_division"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shadow_one"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/name_of_division"
+            android:prompt="@string/hint_division"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shadow_one"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/name_of_division"
+            android:prompt="@string/hint_division"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shadow_one"
+            android:drawSelectorOnTop="true"
+            android:entries="@array/name_of_division"
+            android:prompt="@string/hint_division"
+            android:spinnerMode="dropdown" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shadow_two" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shadow_two" />
+    </LinearLayout>
 </RelativeLayout>

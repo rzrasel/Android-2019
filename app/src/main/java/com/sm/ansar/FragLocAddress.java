@@ -25,3 +25,4 @@ public class FragLocAddress extends Fragment {
         //|------------------------------------------------------------|
     }
 }
+//https://android-dev-examples.blogspot.com/2014/10/android-shape-with-shadow.html

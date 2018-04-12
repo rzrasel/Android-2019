@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/sysToolBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
             android:clipToPadding="true">
 
             <LinearLayout
@@ -62,7 +62,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/idAppBarLayout">
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/sysRelaCommonHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,12 +79,53 @@
                 android:text="Header Name"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
-        </RelativeLayout>
+        </RelativeLayout>-->
+        <LinearLayout
+            android:id="@+id/sysLineCommonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#003a37"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:text="Header Name"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sysTvNumOfPages"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1/4"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="Action"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/sysRelaCommonHeader">
+            android:layout_below="@+id/sysLineCommonHeader">
 
             <SeekBar
                 android:id="@+id/seekBar"

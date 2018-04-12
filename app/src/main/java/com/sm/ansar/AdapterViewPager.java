@@ -30,22 +30,16 @@ public class AdapterViewPager extends FragmentPagerAdapter {
         Bundle bundle = new Bundle();
         switch (argPosition) {
             case 0:
-                fragment = FragTest.newInstance("Frame 1");
+                fragment = FragLocAddress.newInstance("Frame 1");
                 break;
             case 1:
-                fragment = FragTest.newInstance("Frame 2");
+                fragment = FragPersonalInfo.newInstance("Frame 2");
                 break;
             case 2:
-                fragment = FragTest.newInstance("Frame 3");
+                fragment = FragEducationalInfo.newInstance("Frame 3");
                 break;
             case 3:
-                fragment = FragTest.newInstance("Frame 4");
-                break;
-            case 4:
-                fragment = FragTest.newInstance("Frame 5");
-                break;
-            case 5:
-                fragment = FragTest.newInstance("Frame 6");
+                fragment = FragPersonalImage.newInstance("Frame 4");
                 break;
         }
         if (fragment != null) {

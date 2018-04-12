@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Ansar</string>
+    <string name="hint_division">Division</string>
+    <string-array name="name_of_division">
+        <item>Barishal</item>
+        <item>Chattagram</item>
+        <item>Dhaka</item>
+        <item>Mymensingh</item>
+        <item>Khulna</item>
+        <item>Rajshahi</item>
+        <item>Rangpur</item>
+        <item>Sylet</item>
+    </string-array>
 </resources>

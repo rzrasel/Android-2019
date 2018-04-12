@@ -20,9 +20,9 @@ public class ActSplash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), ActLogin.class);
+                //Intent intent = new Intent(getApplicationContext(), ActLogin.class);
                 //Intent intent = new Intent(getApplicationContext(), ActDashboard.class);
-                //Intent intent = new Intent(getApplicationContext(), ActForm.class);
+                Intent intent = new Intent(getApplicationContext(), ActForm.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

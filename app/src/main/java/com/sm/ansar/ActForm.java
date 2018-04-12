@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class ActForm extends AppCompatActivity {
     private Activity activity;
@@ -17,7 +18,8 @@ public class ActForm extends AppCompatActivity {
     private Toolbar sysToolBar;
     private ViewPager viewPager;
     private SeekBar seekBar;
-    private int totalPages = 6;
+    private TextView sysTvNumOfPages;
+    private int totalPages = 4;
     private int currentPagePosition = 0;
 
     @Override
@@ -39,6 +41,8 @@ public class ActForm extends AppCompatActivity {
         //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
         //|------------------------------------------------------------|
         //|------------------------------------------------------------|
+        sysTvNumOfPages = (TextView) findViewById(R.id.sysTvNumOfPages);
+        //|------------------------------------------------------------|
         this.viewPager = (ViewPager) findViewById(R.id.resourceViewPager);
         this.viewPager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen.card_fill_form_view_pager_page_margin));
         seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -52,23 +56,28 @@ public class ActForm extends AppCompatActivity {
         viewPager.setCurrentItem(currentPagePosition);
         //|------------------------------------------------------------|
         //|------------------------------------------------------------|
+        onSetNumberOfPage();
+        //|------------------------------------------------------------|
+        //|------------------------------------------------------------|
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+            public void onPageScrolled(int argPosition, float argPositionOffset, int argPositionOffsetPixels) {
             }
 
             @Override
-            public void onPageSelected(int position) {
-                seekBar.setProgress(position);
+            public void onPageSelected(int argPosition) {
+                currentPagePosition = argPosition;
+                seekBar.setProgress(currentPagePosition);
+                onSetNumberOfPage();
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onPageScrollStateChanged(int argState) {
             }
         });
         //|------------------------------------------------------------|
     }
+    //|------------------------------------------------------------|
 
     public class SeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
         public void onStopTrackingTouch(SeekBar seekBar) {
@@ -77,8 +86,16 @@ public class ActForm extends AppCompatActivity {
         public void onStartTrackingTouch(SeekBar seekBar) {
         }
 
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            viewPager.setCurrentItem(progress, true);
+        public void onProgressChanged(SeekBar argSeekBar, int argProgress, boolean argFromUser) {
+            currentPagePosition = argProgress;
+            viewPager.setCurrentItem(currentPagePosition, true);
+            onSetNumberOfPage();
         }
     }
+
+    //|------------------------------------------------------------|
+    private void onSetNumberOfPage() {
+        sysTvNumOfPages.setText((currentPagePosition + 1) + "/" + totalPages);
+    }
+    //|------------------------------------------------------------|
 }
