@@ -12,3 +12,5 @@ git commit -m "Add Readme & Git Commit File"
 git pull
 git push --all
 ```
+
+Badge - https://itknowledgeexchange.techtarget.com/faq/#badges
