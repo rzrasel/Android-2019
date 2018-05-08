@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Test Example</string>
     <string name="app_google_youtube_key">AIzaSyAqqIRxuAOuN1fsHCoc41-Lo0-XKiB8asc</string>
+    <string name="error_player">An error occurred while initializing the player %1s. Please try again.</string>
 </resources>

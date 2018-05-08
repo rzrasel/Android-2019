@@ -24,7 +24,8 @@
 
         <service android:name=".OnServiceTest" />
 
-        <activity android:name=".ActDataList"></activity>
+        <activity android:name=".ActDataList" />
+        <activity android:name=".ActTestOne"></activity>
     </application>
 
 </manifest>

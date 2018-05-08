@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.rz.armorpagination.aar:com.rz.armorpagination-ArmorPagination-V-201802.02.3@aar'
     implementation 'com.rz.wareadapter.aar:WireAdapter-V-201802.00.4@aar'
     implementation 'com.rz.librarycore.aar:com.rz.librarycore-Library-Core-V-201802.02.7@aar'
+    //implementation files('libs/YouTubeAndroidPlayerApi-1.2.2.jar')
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
