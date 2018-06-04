@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="16dp">
+
+    <!--<TextView
+        android:id="@+id/sysDrawerTitle"
+        android:layout_width="32dp"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:text="D" />-->
+
+    <ImageView
+        android:id="@+id/sysImgViewDrawerIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/sysDrawerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sysImgViewDrawerIcon"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="32dp"
+        android:gravity="left"
+        android:text="Drawer Description"
+        android:textColor="#AA64E4" /><!--7A22C2-->
+</RelativeLayout>
