@@ -32,8 +32,10 @@ dependencies {
     implementation "me.leolin:ShortcutBadger:1.1.21@aar"
     //|----|------------------------------------------------|
     implementation(name: 'com.rz.varnishview.spinallistdrawer-V-201805.00.1', ext: 'aar')
+    implementation(name: 'com.rz.librarycore-V-201802.02.8', ext: 'aar')
     //implementation 'com.rz.varnishview.spinallistdrawer-V-201805.00.1@aar'
     //|----|------------------------------------------------|
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

@@ -153,12 +153,12 @@ public class ActDashboard extends AppCompatActivity {
 
         public OnDrawerSetup onSetDrawerMenuItems() {
             HashMap<String, String> eachRowDataItems = null;
-            /*eachRowDataItems = new HashMap();
-            eachRowDataItems.put("sysImgViewDrawerIcon", R.drawable.img_menu_dashboard + "");
-            eachRowDataItems.put("sysDrawerTitle", "Dashboard");
-            spinalRowDrawerDraw.spinalDrawerMenu.onSetItemData(eachRowDataItems, FragDashboard.class);
-            //|------------------
             eachRowDataItems = new HashMap();
+            eachRowDataItems.put("sysImgViewDrawerIcon", R.mipmap.ic_launcher + "");
+            eachRowDataItems.put("sysDrawerTitle", "Dashboard");
+            spinalRowDrawerDraw.spinalDrawerMenu.onSetItemData(eachRowDataItems, FragTest.class);
+            //|------------------
+            /*eachRowDataItems = new HashMap();
             eachRowDataItems.put("sysImgViewDrawerIcon", R.drawable.img_menu_profile_male + "");
             eachRowDataItems.put("sysDrawerTitle", "Profile");
             spinalRowDrawerDraw.spinalDrawerMenu.onSetItemData(eachRowDataItems, FragDashboard.class);
