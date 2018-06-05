@@ -13,6 +13,6 @@ git pull
 git push --all
 ```
 
-> API URL: [APII URL](http://fbapp.epizy.com/)
+> API URL: [APII URL](http://fbapp.epizy.com/){:target="_blank"}
 
 https://www.youtube.com/watch?v=RpAWCOi3c_Y
