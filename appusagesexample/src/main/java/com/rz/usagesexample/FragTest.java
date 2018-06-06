@@ -14,6 +14,10 @@ import com.rz.librarycore.http.OnFeedHTTPEventListenerHandler;
 import com.rz.librarycore.http.PowerFeedHTTPAsyncTask;
 import com.rz.librarycore.log.LogWriter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -62,12 +66,30 @@ public class FragTest extends android.app.Fragment {
                 return argURLParams;
             }
 
+            //Arrays.asList(strArray).toString().substring(1).replaceFirst("]", "").replace(", ", "")
             @Override
             public void onPostExecute(Object argResult) {
                 //LogWriter.Log("onPostExecute: " + Arrays.toString(argResult) + "");
                 if (argResult instanceof String[]) {
                     String[] strArray = (String[]) argResult;
-                    System.out.println("RETURNED_VALUE********: " + Arrays.toString(strArray));
+                    String urlParsedData = Arrays.asList(strArray).toString().substring(1).replaceFirst("]", "");
+                    System.out.println("RETURNED_VALUE********: " + urlParsedData);
+                    if (CheckJSON.isValidJSON(urlParsedData)) {
+                        LogWriter.Log("JOSON IS VALID");
+                        try {
+                            JSONArray jsonArray = new JSONArray(urlParsedData);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String name = jsonObject.getString("name");
+                                String imageUrl = jsonObject.getString("image_url");
+                                String videoUrl = jsonObject.getString("video_url");
+                                LogWriter.Log("NAME: " + name + " VIDEO: " + videoUrl);
+                            }
+                        } catch (JSONException e) {
+                            //e.printStackTrace();
+                            LogWriter.Log("ERROR: " + e.getMessage());
+                        }
+                    }
                     //System.out.println(obj);
                 }
                 Format format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -83,11 +105,13 @@ public class FragTest extends android.app.Fragment {
             public void onCancelled() {
             }
         });
+        //http://fbapp.epizy.com/api-data-structure/get-data.php
+        //https://wbandapp.000webhostapp.com/
         powerFeedHTTPAsyncTask
                 .setHTTPMethod(HTTPMethod.POST)
                 .setUrlHeader(urlHeaders)
                 .setURLParameters(urlRequestParameters)
-                .onExecute(context, "http://jagoron24.com/app-tv-bangla-url.php");
+                .onExecute(context, "https://wbandapp.000webhostapp.com/get-data.php");
     }
 
     @Override
