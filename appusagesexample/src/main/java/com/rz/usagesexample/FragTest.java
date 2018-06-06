@@ -235,7 +235,7 @@ public class FragTest extends android.app.Fragment {
         }
     }
 
-    public void onSetOnlineListItems(String argTitle, String argVideoUrl) {
+    public void onSetOnlineListItems(String argTitle, String argImageUrl) {
         HashMap<String, String> eachRowDataItems = null;
         eachRowDataItems = new HashMap();
         eachRowDataItems.put("sysListTitle", argTitle);
