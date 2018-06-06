@@ -8,11 +8,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.rz.librarycore.http.HTTPMethod;
 import com.rz.librarycore.http.OnFeedHTTPEventListenerHandler;
 import com.rz.librarycore.http.PowerFeedHTTPAsyncTask;
 import com.rz.librarycore.log.LogWriter;
+import com.rz.wareadapter.SparkedArrayAdapter;
+import com.rz.wareadapter.SparkedModelRowScope;
+import com.rz.wareadapter.SparkedModelRowViewFields;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +26,7 @@ import org.json.JSONObject;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -29,6 +36,10 @@ public class FragTest extends android.app.Fragment {
     private Activity activity;
     private Context context;
     private View rootView;
+    private ListView sysListViewList;
+    private SparkedArrayAdapter adapterListAdapter;
+    private ArrayList<SparkedModelRowViewFields> rowViewFieldListItems = new ArrayList<SparkedModelRowViewFields>();
+    private ArrayList<SparkedModelRowScope> modelListDataItems = new ArrayList<SparkedModelRowScope>();
 
     @Override
     public View onCreateView(LayoutInflater argInflater, ViewGroup argContainer, Bundle argSavedInstanceState) {
@@ -36,8 +47,51 @@ public class FragTest extends android.app.Fragment {
         activity = getActivity();
         //context = argContainer.getContext();
         context = argInflater.getContext();
+        sysListViewList = (ListView) rootView.findViewById(R.id.sysListViewList);
+        adapterListAdapter = new SparkedArrayAdapter(context, R.layout.lay_list_data_list, modelListDataItems);
+        //rowViewFieldListItems.add(adapterListAdapter.onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerTitle"));
+        //rowViewFieldListItems.add(adapterListAdapter.onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerDescription"));
+        //adapterListAdapter.onSetRowViewFieldList(rowViewFieldListItems);
+        onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysListTitle");
+        //onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerDescription");
+        onSetAdapter();
+        sysListViewList.setAdapter(adapterListAdapter);
         onPostMethodOne();
         return rootView;
+    }
+
+    private void onSetAdapter() {
+        adapterListAdapter.onSetRowViewFieldList(rowViewFieldListItems)
+                .onSetRowViewFieldListenerHandler(new SparkedArrayAdapter.OnFieldListenerHandler() {
+                    @Override
+                    public void onSetFieldValue(ArrayList<SparkedModelRowViewFields> argRowViewFieldList, Object argObject) {
+                        SparkedModelRowScope itemScope = (SparkedModelRowScope) argObject;
+                        HashMap<String, String> hashMapRowIdValueItem = itemScope.getHashMapRowIdValueItems();
+                        for (SparkedModelRowViewFields itemField : argRowViewFieldList) {
+                            Object object = itemField.getFieldObject();
+                            String fieldResourceId = itemField.getFieldResourceId();
+                            if (object instanceof TextView) {
+                                TextView rowField = null;
+                                rowField = (TextView) itemField.getFieldObject();
+                                if (hashMapRowIdValueItem.containsKey(fieldResourceId)) {
+                                    rowField.setText(hashMapRowIdValueItem.get(fieldResourceId));
+                                }
+                                System.out.println(itemField.getFieldResourceId());
+                            }
+                            System.out.println("------" + fieldResourceId);
+                        }
+                    }
+                });
+    }
+
+    private void onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE argFieldType, String argFieldResourceId) {
+        if (argFieldType == SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW) {
+            TextView textView = new TextView(context);
+            rowViewFieldListItems.add(SparkedModelRowViewFields.onGetSetModelRow(textView, argFieldResourceId));
+        } else if (argFieldType == SparkedArrayAdapter.FIELD_TYPE.IMAGE_VIEW) {
+            ImageView imageView = new ImageView(context);
+            rowViewFieldListItems.add(SparkedModelRowViewFields.onGetSetModelRow(imageView, argFieldResourceId));
+        }
     }
 
     private void onPostMethodOne() {
@@ -80,11 +134,13 @@ public class FragTest extends android.app.Fragment {
                             JSONArray jsonArray = new JSONArray(urlParsedData);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                String name = jsonObject.getString("name");
-                                String imageUrl = jsonObject.getString("image_url");
-                                String videoUrl = jsonObject.getString("video_url");
+                                String name = jsonObject.getString(ModelDataList.TagProperty.NAME.getValue());
+                                String imageUrl = jsonObject.getString(ModelDataList.TagProperty.IMAGE_URL.getValue());
+                                String videoUrl = jsonObject.getString(ModelDataList.TagProperty.VIDEO_URL.getValue());
                                 LogWriter.Log("NAME: " + name + " VIDEO: " + videoUrl);
+                                onSetOnlineListItems(name, videoUrl);
                             }
+                            adapterListAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             //e.printStackTrace();
                             LogWriter.Log("ERROR: " + e.getMessage());
@@ -177,5 +233,14 @@ public class FragTest extends android.app.Fragment {
             urlRequestParameters.put("app_request_time", staticFormat.format(new Date()));*/
             return urlRequestParameters;
         }
+    }
+
+    public void onSetOnlineListItems(String argTitle, String argVideoUrl) {
+        HashMap<String, String> eachRowDataItems = null;
+        eachRowDataItems = new HashMap();
+        eachRowDataItems.put("sysListTitle", argTitle);
+        //eachRowDataItems.put("sysDrawerDescription", argDetails);
+        //spinalRowDrawerDraw.spinalDrawerMenu.onSetItemData(eachRowDataItems, FirstFragment.class);
+        modelListDataItems.add(SparkedModelRowScope.onGetSetRow(eachRowDataItems, (String) null, SparkedModelRowScope.LISTENER_TYPE.NONE));
     }
 }

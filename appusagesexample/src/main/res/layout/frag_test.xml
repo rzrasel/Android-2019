@@ -5,10 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".FragTest">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/sysListViewList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello Blank Fragment" />
+        android:layout_gravity="start"
+        android:background="#00ffffff"
+        android:choiceMode="singleChoice"
+        android:divider="#E0C0F9"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" />
 
 </FrameLayout>
