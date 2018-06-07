@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/sysImgThumb"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="82dp"
         android:gravity="left"
         android:text="List Description"
         android:textColor="#AA64E4" /><!--7A22C2-->
