@@ -2,7 +2,11 @@ package com.rz.usagesexample;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,6 +28,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,10 +60,29 @@ public class FragTest extends android.app.Fragment {
         //rowViewFieldListItems.add(adapterListAdapter.onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerTitle"));
         //rowViewFieldListItems.add(adapterListAdapter.onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerDescription"));
         //adapterListAdapter.onSetRowViewFieldList(rowViewFieldListItems);
+        onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.IMAGE_VIEW, "sysImgThumb");
         onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysListTitle");
         //onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerDescription");
-        onSetAdapter();
+        //onSetAdapter();
+        adapterListAdapter.onSetRowViewFieldList(rowViewFieldListItems);
         sysListViewList.setAdapter(adapterListAdapter);
+        adapterListAdapter.onSetExternalListenerHandler(new SparkedArrayAdapter.OnExternalListenerHandler() {
+            @Override
+            public void onFileManage(final View argView, final String argValue) {
+                final ImageView imageView = (ImageView) argView;
+                System.out.println("EXTERNAL: " + argValue);
+                new DoBackTask(imageView).execute(argValue);
+                //imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.img_font_pass_confirm_2));
+                /*imageView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.img_font_pass_confirm_2));
+                        //imageView.setImageBitmap(getURLBitmap(argValue));
+                        new DoBackTask(imageView).execute(argValue);
+                    }
+                });*/
+            }
+        });
         onPostMethodOne();
         return rootView;
     }
@@ -138,7 +165,7 @@ public class FragTest extends android.app.Fragment {
                                 String imageUrl = jsonObject.getString(ModelDataList.TagProperty.IMAGE_URL.getValue());
                                 String videoUrl = jsonObject.getString(ModelDataList.TagProperty.VIDEO_URL.getValue());
                                 LogWriter.Log("NAME: " + name + " VIDEO: " + videoUrl);
-                                onSetOnlineListItems(name, videoUrl);
+                                onSetOnlineListItems(name, imageUrl);
                             }
                             adapterListAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
@@ -238,9 +265,50 @@ public class FragTest extends android.app.Fragment {
     public void onSetOnlineListItems(String argTitle, String argImageUrl) {
         HashMap<String, String> eachRowDataItems = null;
         eachRowDataItems = new HashMap();
+        eachRowDataItems.put("sysImgThumb", argImageUrl + "");
         eachRowDataItems.put("sysListTitle", argTitle);
         //eachRowDataItems.put("sysDrawerDescription", argDetails);
         //spinalRowDrawerDraw.spinalDrawerMenu.onSetItemData(eachRowDataItems, FirstFragment.class);
         modelListDataItems.add(SparkedModelRowScope.onGetSetRow(eachRowDataItems, (String) null, SparkedModelRowScope.LISTENER_TYPE.NONE));
+    }
+
+    public static Drawable getURLDrawable(String argStrUrl) {
+        try {
+            InputStream inputStream = (InputStream) new URL(argStrUrl).getContent();
+            Drawable drawable = Drawable.createFromStream(inputStream, "src name");
+            return drawable;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public class DoBackTask extends AsyncTask<String, Void, Bitmap> {
+        private ImageView imageView;
+        private String strURL;
+
+        public DoBackTask(ImageView argImageView) {
+            imageView = argImageView;
+        }
+
+        protected Bitmap doInBackground(String... argUrl) {
+            return getURLBitmap(argUrl[0]);
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            imageView.setImageBitmap(result);
+        }
+    }
+
+    public static Bitmap getURLBitmap(String argStrUrl) {
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(argStrUrl).getContent());
+            //image.setImageBitmap(bitmap);
+            return bitmap;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
