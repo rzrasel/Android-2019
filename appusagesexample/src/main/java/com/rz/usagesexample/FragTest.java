@@ -312,3 +312,4 @@ public class FragTest extends android.app.Fragment {
         return null;
     }
 }
+//https://teamtreehouse.com/community/chat-bubble-not-wrapping-content

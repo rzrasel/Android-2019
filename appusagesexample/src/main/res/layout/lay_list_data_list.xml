@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/sysImgThumb"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerVertical="true"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
