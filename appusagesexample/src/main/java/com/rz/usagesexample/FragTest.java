@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.rz.librarycore.http.HTTPMethod;
@@ -61,6 +62,7 @@ public class FragTest extends android.app.Fragment {
         //rowViewFieldListItems.add(adapterListAdapter.onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerDescription"));
         //adapterListAdapter.onSetRowViewFieldList(rowViewFieldListItems);
         onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.IMAGE_VIEW, "sysImgThumb");
+        onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.PROGRESS_BAR, "sysPbImageLoader");
         onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysListTitle");
         //onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerDescription");
         //onSetAdapter();
@@ -70,6 +72,15 @@ public class FragTest extends android.app.Fragment {
             @Override
             public void onFileManage(final View argView, final String argValue) {
                 final ImageView imageView = (ImageView) argView;
+                ViewGroup viewGroup = (ViewGroup) imageView.getParent();
+                System.out.println("GROUP: " + viewGroup.getChildCount());
+                for (int index = 0; index < viewGroup.getChildCount(); index++) {
+                    //View nextChild = ((ViewGroup)viewGroup).getChildAt(index);
+                    View nextChild = (View) viewGroup.getChildAt(index);
+                    String ResourceIdAsString = nextChild.getResources().getResourceName(nextChild.getId());
+                    //getResources().getResourceEntryName(int resid);
+                    System.out.println("-------------:VIEW:------------- " + ResourceIdAsString);
+                }
                 System.out.println("EXTERNAL: " + argValue);
                 new DoBackTask(imageView).execute(argValue);
                 //imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.img_font_pass_confirm_2));
@@ -118,6 +129,9 @@ public class FragTest extends android.app.Fragment {
         } else if (argFieldType == SparkedArrayAdapter.FIELD_TYPE.IMAGE_VIEW) {
             ImageView imageView = new ImageView(context);
             rowViewFieldListItems.add(SparkedModelRowViewFields.onGetSetModelRow(imageView, argFieldResourceId));
+        } else if (argFieldType == SparkedArrayAdapter.FIELD_TYPE.PROGRESS_BAR) {
+            ProgressBar progressBar = new ProgressBar(this.context);
+            rowViewFieldListItems.add(SparkedModelRowViewFields.onGetSetModelRow(progressBar, argFieldResourceId));
         }
     }
 

@@ -25,8 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActDashboard" />
-        <activity android:name=".ActTest"></activity>
+            android:name=".ActDashboard"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
+        <activity
+            android:name=".ActTest"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"></activity>
     </application>
 
 </manifest>
