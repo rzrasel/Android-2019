@@ -73,16 +73,17 @@ public class FragTest extends android.app.Fragment {
             public void onFileManage(final View argView, final String argValue) {
                 final ImageView imageView = (ImageView) argView;
                 ViewGroup viewGroup = (ViewGroup) imageView.getParent();
-                System.out.println("GROUP: " + viewGroup.getChildCount());
+                ProgressBar progressBar = (ProgressBar) viewGroup.getChildAt(1);
+                /*System.out.println("GROUP: " + viewGroup.getChildCount());
                 for (int index = 0; index < viewGroup.getChildCount(); index++) {
                     //View nextChild = ((ViewGroup)viewGroup).getChildAt(index);
                     View nextChild = (View) viewGroup.getChildAt(index);
                     String ResourceIdAsString = nextChild.getResources().getResourceName(nextChild.getId());
                     //getResources().getResourceEntryName(int resid);
                     System.out.println("-------------:VIEW:------------- " + ResourceIdAsString);
-                }
+                }*/
                 System.out.println("EXTERNAL: " + argValue);
-                new DoBackTask(imageView).execute(argValue);
+                new DoBackTask(progressBar, imageView).execute(argValue);
                 //imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.img_font_pass_confirm_2));
                 /*imageView.post(new Runnable() {
                     @Override
@@ -297,6 +298,7 @@ public class FragTest extends android.app.Fragment {
     }
 
     public class DoBackTask extends AsyncTask<String, Void, Bitmap> {
+        private ProgressBar progressBar;
         private ImageView imageView;
         private String strURL;
 
@@ -304,12 +306,33 @@ public class FragTest extends android.app.Fragment {
             imageView = argImageView;
         }
 
+        public DoBackTask(ProgressBar argProgressBar, ImageView argImageView) {
+            progressBar = argProgressBar;
+            imageView = argImageView;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            if (progressBar != null) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            if (imageView != null) {
+                imageView.setVisibility(View.INVISIBLE);
+            }
+        }
+
         protected Bitmap doInBackground(String... argUrl) {
             return getURLBitmap(argUrl[0]);
         }
 
         protected void onPostExecute(Bitmap result) {
-            imageView.setImageBitmap(result);
+            if (progressBar != null) {
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+            if (imageView != null) {
+                imageView.setImageBitmap(result);
+                imageView.setVisibility(View.VISIBLE);
+            }
         }
     }
 
