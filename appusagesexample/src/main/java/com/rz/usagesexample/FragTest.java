@@ -56,6 +56,7 @@ public class FragTest extends android.app.Fragment {
         activity = getActivity();
         //context = argContainer.getContext();
         context = argInflater.getContext();
+        onMultiArrayTest();
         sysListViewList = (ListView) rootView.findViewById(R.id.sysListViewList);
         adapterListAdapter = new SparkedArrayAdapter(context, R.layout.lay_list_data_list, modelListDataItems);
         //rowViewFieldListItems.add(adapterListAdapter.onSetRowViewField(SparkedArrayAdapter.FIELD_TYPE.TEXT_VIEW, "sysDrawerTitle"));
@@ -97,6 +98,16 @@ public class FragTest extends android.app.Fragment {
         });
         onPostMethodOne();
         return rootView;
+    }
+
+    private void onMultiArrayTest() {
+        int childCount = 10;
+        ArrayList<String> arrayIds = new ArrayList<>();
+        for (int i = 0; i < childCount; i++) {
+            arrayIds.add("Count-" + (i + 1));
+        }
+        JSONArray jsArray = new JSONArray(arrayIds);
+        LogWriter.Log("DEBUG_PRINT: " + jsArray.toString());
     }
 
     private void onSetAdapter() {
