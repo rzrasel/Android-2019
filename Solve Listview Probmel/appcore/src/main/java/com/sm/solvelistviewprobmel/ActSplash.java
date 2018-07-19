@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.library.LogWriter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ActSplash extends AppCompatActivity {
@@ -22,8 +23,8 @@ public class ActSplash extends AppCompatActivity {
         context = this;
         new HTTPTestRequest(context).HTTPRequestExecute(new HTTPTestRequest.HTTPEventListenerHandler() {
             @Override
-            public void HTTPExecute(HashMap<String, String> argHTTPResponseData) {
-                LogWriter.Log("HTTPTestRequest: " + argHTTPResponseData.toString());
+            public void HTTPExecute(Object argDataModelItems) {
+                LogWriter.Log("PRINT_HTTPTestRequest_ActSplash: " + argDataModelItems.toString());
             }
         });
         startActivity(new Intent(context, ActListViewOne.class));

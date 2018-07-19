@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.library.LogWriter;
+
 import java.util.ArrayList;
 
 public class ActListViewOne extends AppCompatActivity {
@@ -42,5 +44,22 @@ public class ActListViewOne extends AppCompatActivity {
         dataModelItems.add(ModelListData.onGetSetRow("List Row 15"));
         adapterListView = new AdapterListView(context, 0, dataModelItems);
         sysDrawerList.setAdapter(adapterListView);
+        new HTTPTestRequest(context).HTTPRequestExecute(new HTTPTestRequest.HTTPEventListenerHandler() {
+            @Override
+            public void HTTPExecute(Object argDataModelItems) {
+                LogWriter.Log("PRINT_HTTPTestRequest_ActListViewOne: " + argDataModelItems.toString());
+                //if (argDataModelItems instanceof ArrayList<?>) {
+                if (argDataModelItems instanceof ArrayList<?>) {
+                    dataModelItems.clear();
+                    dataModelItems.addAll((ArrayList<ModelListData>) argDataModelItems);
+                    adapterListView.notifyDataSetChanged();
+                    LogWriter.Log("PRINT_TEST_ActListViewOne: " + dataModelItems.toString());
+                }
+                /*dataModelItems.clear();
+                dataModelItems.addAll((ArrayList<ModelListData>) argDataModelItems);
+                adapterListView.notifyDataSetChanged();
+                LogWriter.Log("PRINT_TEST_ActListViewOne: " + dataModelItems.toString());*/
+            }
+        });
     }
 }
