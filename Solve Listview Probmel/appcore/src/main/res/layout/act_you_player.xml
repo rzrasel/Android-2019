@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ActYouPlayer">
 
+    <FrameLayout
+        android:id="@+id/sysFragmentYoutubePlayer"
+        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+    <!--<com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/sysYoutubePlayerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
 
-    <LinearLayout
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -27,13 +38,18 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:text="alskf lasdlfj lajfa laflaslfdjlasfl alkdf alksdf" />
-        <!--<ListView
+    </LinearLayout>-->
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="1"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"/>-->
-    </LinearLayout>
+            android:layout_weight="0"/>
+    </LinearLayout>-->
 </RelativeLayout>
