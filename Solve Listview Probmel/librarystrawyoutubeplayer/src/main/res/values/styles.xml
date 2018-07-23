@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="LibAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowActivityTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowEnterTransition" tools:targetApi="lollipop">
+            @android:transition/slide_right
+        </item>
+        <item name="android:windowExitTransition" tools:targetApi="lollipop">
+            @android:transition/slide_left
+        </item>
+    </style>
+
+    <style name="LibThemeNoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <!--<item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>-->
+    </style>
+</resources>

@@ -2,8 +2,11 @@ package com.sm.solvelistviewprobmel;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.library.LogWriter;
@@ -59,6 +62,19 @@ public class ActListViewOne extends AppCompatActivity {
                 dataModelItems.addAll((ArrayList<ModelListData>) argDataModelItems);
                 adapterListView.notifyDataSetChanged();
                 LogWriter.Log("PRINT_TEST_ActListViewOne: " + dataModelItems.toString());*/
+            }
+        });
+        sysDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> argAdapterView, View argView, int argPosition, long argId) {
+                System.out.println("POSITION: " + argPosition);
+                System.out.println("VALUE: " + dataModelItems.get(argPosition).getTitle());
+                String videoId = dataModelItems.get(argPosition).getVideoId();
+                Intent intentRedirectWindow = new Intent(context, ActYouPlayer.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("video_id", videoId);
+                intentRedirectWindow.putExtras(bundle);
+                startActivity(intentRedirectWindow);
             }
         });
     }

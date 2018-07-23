@@ -5,6 +5,9 @@ buildscript {
     repositories {
         google()
         jcenter()
+        flatDir {
+            dirs 'libs'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.3'
@@ -24,4 +27,17 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    extAppName = "Armor Pagination"
+    extCompileSdkVersion = 26
+    extBuildToolsVersion = '26.0.2'
+
+    extMinSdkVersion = 15
+    extTargetSdkVersion = 26
+    extVersionCode = 201803023
+    extVersionName = "201803.02.3"
+
+    supportLibraryVersion = '27.0.2'
+    playServicesVersion = '11.8.0'
 }
