@@ -23,7 +23,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActListViewOne" />
-        <activity android:name=".ActYouPlayer"></activity>
+        <activity
+            android:name=".ActYouPlayer"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--android:screenOrientation="landscape"-->
     </application>
 
 </manifest>
