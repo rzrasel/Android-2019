@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
@@ -93,6 +94,7 @@ public class ActYouPlayer extends AppCompatActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider argProvider, YouTubePlayer argYouTubePlayer, boolean argWasRestored) {
                 if (!argWasRestored) {
+                    youTubePlayer = argYouTubePlayer;
                     argYouTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
                     argYouTubePlayer.loadVideo(videoId);
                     argYouTubePlayer.play();
@@ -128,7 +130,14 @@ public class ActYouPlayer extends AppCompatActivity {
         //
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activity.setRequestedOrientation(LANDSCAPE_ORIENTATION);*/
-        //sysRelayMainContainer.setRotation(270);
+        //sysRelayMainContainer.setRotation(180);
+        youTubePlayerSupportFragment.getView().setRotation(90);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent argEvent) {
+        System.out.println("SENSOR_ANGLE_onTouchEvent: ");
+        return super.onTouchEvent(argEvent);
     }
 
     @Override
@@ -234,4 +243,6 @@ https://stackoverflow.com/questions/20813386/onsensorchangedsensorevent-event-al
 https://www.eecs.yorku.ca/course_archive/2017-18/W/4443/Javadoc/index.html?ca/yorku/eecs/mack/demodisplay/DemoDisplayActivity.html
 
 https://www.eecs.yorku.ca/course_archive/2017-18/W/4443/Javadoc/index.html?ca/yorku/eecs/mack/demodisplay/DemoDisplayActivity.html
+
+https://stackoverflow.com/questions/48240996/youtubeplayer-how-to-handle-click-listener
 */
