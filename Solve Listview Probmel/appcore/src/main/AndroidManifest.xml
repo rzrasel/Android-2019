@@ -3,6 +3,7 @@
     package="com.sm.solvelistviewprobmel">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
@@ -27,8 +28,16 @@
             android:name=".ActYouPlayer"
             android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <!--android:screenOrientation="landscape"-->
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- android:screenOrientation="landscape" -->
+        <activity
+            android:name=".ActYouPlayerOne"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActYouTubePlayerView"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

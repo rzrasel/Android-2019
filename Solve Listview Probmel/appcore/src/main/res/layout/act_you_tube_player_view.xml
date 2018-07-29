@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape">
+
+    <RelativeLayout
+        android:id="@+id/sysRelayMainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/idBottomViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff">
+
+            <TextView
+                android:id="@+id/idTvControlView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Control Control Control Control Control Control Control"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/idTvInfoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idTvControlView"
+                android:text="alskf lasdlfj lajfa laflaslfdjlasfl alkdf alksdf" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/idVideoViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/idBottomViewContainer"
+            android:layout_gravity="center"
+            android:background="#000000">
+
+            <RelativeLayout
+                android:id="@+id/sysControlPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#32000000">
+
+                <TextView
+                    android:id="@+id/idTvTestView"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:text="Control Control Control Control Control Control Control"
+                    android:textColor="#ffffff" />
+            </RelativeLayout>
+
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:id="@+id/sysYouTubePlayerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/sysControlPanel"
+                android:layout_marginBottom="30dp"
+                android:clickable="true"
+                android:onClick="onClick" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

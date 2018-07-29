@@ -109,8 +109,7 @@ public class LibYouTubePlayerView extends YouTubePlayerSupportFragment {
         }
 
         @Override
-        public void onInitializationFailure(YouTubePlayer.Provider
-                                                    provider, YouTubeInitializationResult youTubeInitializationResult) {
+        public void onInitializationFailure(YouTubePlayer.Provider argProvider, YouTubeInitializationResult argYouTubeInitializationResult) {
             //
         }
     }
