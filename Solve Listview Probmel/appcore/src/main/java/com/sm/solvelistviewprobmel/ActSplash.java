@@ -35,8 +35,8 @@ public class ActSplash extends AppCompatActivity {
             }
         });
         //startActivity(new Intent(context, ActListViewOne.class));
-        //startActivity(new Intent(context, ActYouPlayerOne.class));
-        startActivity(new Intent(context, ActYouTubePlayerView.class));
+        startActivity(new Intent(context, ActYouPlayerOne.class));
+        //startActivity(new Intent(context, ActYouTubePlayerView.class));
         finish();
         threadBackgroundNetCheck.start();
     }

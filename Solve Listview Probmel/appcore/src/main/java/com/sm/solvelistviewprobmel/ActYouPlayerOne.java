@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class ActYouPlayerOne extends AppCompatActivity {
     private Activity activity;
@@ -23,7 +20,9 @@ public class ActYouPlayerOne extends AppCompatActivity {
             ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             : ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE;
     private CastYouTubePlayerSupportFragment castYouTubePlayerSupportFragment;
+    //private StrawYouTubePlayerFragment strawYouTubePlayerFragment;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
+    private String DEVELOPER_KEY = "AIzaSyAqqIRxuAOuN1fsHCoc41-Lo0-XKiB8asc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class ActYouPlayerOne extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         activity.setRequestedOrientation(LANDSCAPE_ORIENTATION);
         castYouTubePlayerSupportFragment = CastYouTubePlayerSupportFragment.newInstance("ePz-YEPXl6Y");
+        //strawYouTubePlayerFragment = StrawYouTubePlayerFragment.newInstance(context, DEVELOPER_KEY, "ePz-YEPXl6Y");
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.sysFragmentYoutubePlayer, castYouTubePlayerSupportFragment, TAG_FRAGMENT)
