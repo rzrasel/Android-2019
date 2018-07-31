@@ -37,7 +37,11 @@
         <activity
             android:name=".ActYouTubePlayerView"
             android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ActYouPlayerTwo"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout" />
     </application>
 
 </manifest>

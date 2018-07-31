@@ -38,7 +38,8 @@ public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragme
         @Override
         public void onInitializationSuccess(YouTubePlayer.Provider argProvider, YouTubePlayer argYouTubePlayer, boolean argWasRestored) {
             activePlayer = argYouTubePlayer;
-            activePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
+            //activePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
+            activePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
             /*if (!argWasRestored) {
                 activePlayer.loadVideo(getArguments().getString("youtube_video_id"), 0);
                 //System.out.println("VIDEO: " + getArguments().getString("youtube_video_id"));

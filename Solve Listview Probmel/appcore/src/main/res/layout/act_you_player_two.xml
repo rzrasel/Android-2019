@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <RelativeLayout
+        android:id="@+id/sysRelayMainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/idBottomViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#000000">
+
+            <RelativeLayout
+                android:id="@+id/idViewMediaContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="#000000"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/youtube_player_play_btn" />
+
+                    <SeekBar
+                        android:id="@+id/sysSeekBarVideo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:indeterminateDrawable="@drawable/youtube_star_play_progress_seek"
+                        android:maxHeight="2dp"
+                        android:minHeight="2dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:progressDrawable="@drawable/youtube_star_play_progress_seek"
+                        android:thumb="@drawable/youtube_seek_dot_red"
+                        android:thumbOffset="10dip" />
+
+                    <SeekBar
+                        android:id="@+id/sysSeekBarVolume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:indeterminateDrawable="@drawable/youtube_star_play_progress_seek"
+                        android:maxHeight="2dp"
+                        android:minHeight="2dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:progressDrawable="@drawable/youtube_star_play_progress_seek"
+                        android:thumb="@drawable/youtube_seek_dot_white"
+                        android:thumbOffset="10dip" />
+
+                    <TextView
+                        android:id="@+id/sysTextViewDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:text="00:00:00"
+                        android:textColor="#fff0f0f0" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/idViewAdContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idViewMediaContainer"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/idBottomView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="alskf lasdlfj lajfa laflaslfdjlasfl alkdf alksdf"
+                        android:textColor="#fff0f0f0" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/sysBtnVolumeSettings"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/volume_settings_white" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/idVideoViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/idBottomViewContainer"
+            android:layout_gravity="center"
+            android:background="#000000">
+
+            <FrameLayout
+                android:id="@+id/sysFragmentYoutubePlayer"
+                android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
