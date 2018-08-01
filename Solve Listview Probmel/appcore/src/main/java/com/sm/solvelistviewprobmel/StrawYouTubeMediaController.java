@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.Formatter;
+import java.util.Locale;
 
 public class StrawYouTubeMediaController extends FrameLayout {
     private Context context;
@@ -56,11 +57,13 @@ public class StrawYouTubeMediaController extends FrameLayout {
         sysBtnPlayPause = (Button) argView.findViewById(R.id.sysBtnPlayPause);
         sysSeekBarVideo = (SeekBar) argView.findViewById(R.id.sysSeekBarVideo);
         sysSeekBarVolume = (SeekBar) argView.findViewById(R.id.sysSeekBarVolume);
-        sysTextViewCurrent = (TextView) argView.findViewById(R.id.sysTextViewCurrent);
         sysTextViewDuration = (TextView) argView.findViewById(R.id.sysTextViewDuration);
+        sysTextViewCurrent = (TextView) argView.findViewById(R.id.sysTextViewCurrent);
+        formattedStringBuilder = new StringBuilder();
+        formatter = new Formatter(formattedStringBuilder, Locale.getDefault());
     }
 
-    private Handler mHandler = new Handler() {
+    private Handler hndlerMediaController = new Handler() {
         @Override
         public void handleMessage(Message argMessage) {
         }
@@ -68,8 +71,13 @@ public class StrawYouTubeMediaController extends FrameLayout {
 
     public void onSetDurationTime(int argTimeMillis) {
         //System.out.println("LOG_WRITER: " + argTimeMillis);
-        //sysTextViewDuration.setText(stringForTime(argTimeMillis) + "");
-        System.out.println("LOG_WRITER: " + stringForTime(argTimeMillis));
+        sysTextViewDuration.setText(stringForTime(argTimeMillis) + "");
+        //System.out.println("LOG_WRITER: " + stringForTime(argTimeMillis));
+    }
+    public void onSetCurrentTime(int argTimeMillis) {
+        //System.out.println("LOG_WRITER: " + argTimeMillis);
+        sysTextViewCurrent.setText(stringForTime(argTimeMillis) + "");
+        //System.out.println("LOG_WRITER: " + stringForTime(argTimeMillis));
     }
 
     private String stringForTime(int argTimeMillis) {
@@ -79,7 +87,7 @@ public class StrawYouTubeMediaController extends FrameLayout {
         int minutes = (totalSeconds / 60) % 60;
         int hours = totalSeconds / 3600;
 
-        //formattedStringBuilder.setLength(0);
+        formattedStringBuilder.setLength(0);
         //System.out.println("LOG_WRITER: " + argTimeMillis);
         if (hours > 0) {
             return formatter.format("%d:%02d:%02d", hours, minutes, seconds).toString();

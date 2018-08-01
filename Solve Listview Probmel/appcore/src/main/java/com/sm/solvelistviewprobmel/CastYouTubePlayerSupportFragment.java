@@ -9,7 +9,7 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragment {
     private String currentVideoID = "video_id";
     private YouTubePlayer activePlayer;
-    //private StrawYouTubeMediaController youTubeMediaController;
+    private StrawYouTubeMediaController youTubeMediaController;
 
     public static CastYouTubePlayerSupportFragment newInstance(String argYoutubeVideoId) {
         CastYouTubePlayerSupportFragment playerYouTubeFrag = new CastYouTubePlayerSupportFragment();
@@ -79,7 +79,11 @@ public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragme
 
         @Override
         public void onLoaded(String argVideoId) {
-            StrawYouTubeMediaController.youTubeMediaController.onSetDurationTime(activePlayer.getDurationMillis());
+            //StrawYouTubeMediaController.youTubeMediaController.onSetDurationTime(activePlayer.getDurationMillis());
+            if (youTubeMediaController != null) {
+                youTubeMediaController.onSetDurationTime(activePlayer.getDurationMillis());
+                youTubeMediaController.onSetCurrentTime(activePlayer.getCurrentTimeMillis());
+            }
         }
 
         @Override
@@ -127,17 +131,8 @@ public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragme
         }
     };
 
-    public class OnYouTubeMediaController implements StrawYouTubeMediaController.OnEventHandler {
-        @Override
-        public void onPlayPause(boolean argIsPlay) {
-            if (activePlayer != null) {
-                if (argIsPlay && !activePlayer.isPlaying()) {
-                    activePlayer.play();
-                } else {
-                    activePlayer.pause();
-                }
-            }
-        }
+    public void onSetMediaController(StrawYouTubeMediaController argYouTubeMediaController) {
+        youTubeMediaController = argYouTubeMediaController;
     }
 
     public interface DeveloperKey {

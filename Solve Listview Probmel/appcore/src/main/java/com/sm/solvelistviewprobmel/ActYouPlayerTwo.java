@@ -26,6 +26,7 @@ public class ActYouPlayerTwo extends AppCompatActivity {
     //private StrawYouTubePlayerFragment strawYouTubePlayerFragment;
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
     private String DEVELOPER_KEY = "AIzaSyAqqIRxuAOuN1fsHCoc41-Lo0-XKiB8asc";
+    private StrawYouTubeMediaController sysMediaController;
     private AudioManager audioManager;
     private RelativeLayout idViewMediaContainer;
     private Button sysBtnVolumeSettings;
@@ -45,7 +46,9 @@ public class ActYouPlayerTwo extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);*/
         activity.setRequestedOrientation(LANDSCAPE_ORIENTATION);
+        sysMediaController = (StrawYouTubeMediaController) findViewById(R.id.sysMediaController);
         castYouTubePlayerSupportFragment = CastYouTubePlayerSupportFragment.newInstance("ePz-YEPXl6Y");
+        castYouTubePlayerSupportFragment.onSetMediaController(sysMediaController);
         //strawYouTubePlayerFragment = StrawYouTubePlayerFragment.newInstance(context, DEVELOPER_KEY, "ePz-YEPXl6Y");
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
