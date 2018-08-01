@@ -40,8 +40,9 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".ActYouPlayerTwo"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout" />
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden|screenLayout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActOnPlayAssetsVideo"></activity>
     </application>
 
 </manifest>
