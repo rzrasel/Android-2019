@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sysReLayMediaContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sysBtnPlayPause"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/youtube_player_play_btn" />
+
+        <SeekBar
+            android:id="@+id/sysSeekBarVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:indeterminateDrawable="@drawable/youtube_star_play_progress_seek"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:progressDrawable="@drawable/youtube_star_play_progress_seek"
+            android:thumb="@drawable/youtube_seek_dot_red"
+            android:thumbOffset="10dip" />
+
+        <SeekBar
+            android:id="@+id/sysSeekBarVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".2"
+            android:indeterminateDrawable="@drawable/youtube_star_play_progress_seek"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:progressDrawable="@drawable/youtube_star_play_progress_seek"
+            android:thumb="@drawable/youtube_seek_dot_white"
+            android:thumbOffset="10dip" />
+
+        <TextView
+            android:id="@+id/sysTextViewCurrent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="2dp"
+            android:text="00:00:00"
+            android:textColor="#fff0f0f0" />
+
+        <TextView
+            android:id="@+id/sysTextViewDivider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="2dp"
+            android:text="/"
+            android:textColor="#fff0f0f0" />
+
+        <TextView
+            android:id="@+id/sysTextViewDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:text="00:00:00"
+            android:textColor="#fff0f0f0" />
+    </LinearLayout>
+</RelativeLayout>
