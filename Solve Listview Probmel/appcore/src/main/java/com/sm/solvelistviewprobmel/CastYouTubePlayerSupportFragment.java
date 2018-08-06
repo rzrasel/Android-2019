@@ -10,6 +10,7 @@ public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragme
     private String currentVideoID = "video_id";
     private YouTubePlayer activePlayer;
     private StrawYouTubeMediaController youTubeMediaController;
+    //private StrawYouTubeMediaController.OnEventHandler onEventHandler;
 
     public static CastYouTubePlayerSupportFragment newInstance(String argYoutubeVideoId) {
         CastYouTubePlayerSupportFragment playerYouTubeFrag = new CastYouTubePlayerSupportFragment();
@@ -110,11 +111,19 @@ public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragme
         @Override
         public void onPlaying() {
             //Toast.makeText(YoutubeActivity.this, "Video is playing", Toast.LENGTH_LONG).show();
+            if (youTubeMediaController != null) {
+                //youTubeMediaController.onSetPlayerStatus(StrawYouTubeMediaController.OnEventProperty.STATE_PLAYING);
+            }
+            System.out.println("---------------------onPlaying");
         }
 
         @Override
         public void onPaused() {
             //Toast.makeText(YoutubeActivity.this, "Video is paused", Toast.LENGTH_LONG).show();
+            if (youTubeMediaController != null) {
+                //youTubeMediaController.onSetPlayerStatus(StrawYouTubeMediaController.OnEventProperty.STATE_PAUSE);
+            }
+            System.out.println("---------------------onPaused");
         }
 
         @Override
@@ -133,6 +142,20 @@ public class CastYouTubePlayerSupportFragment extends YouTubePlayerSupportFragme
 
     public void onSetMediaController(StrawYouTubeMediaController argYouTubeMediaController) {
         youTubeMediaController = argYouTubeMediaController;
+        youTubeMediaController.onSetYouTubePlayer(activePlayer);
+        /*youTubeMediaController.setOnEventListener(new StrawYouTubeMediaController.OnEventHandler() {
+            @Override
+            public void onPlayPause(boolean argIsPlay) {
+                System.out.println("---------------------youTubeMediaController_setOnEventListener_" + activePlayer.isPlaying());
+                if (activePlayer.isPlaying() && argIsPlay) {
+                    activePlayer.pause();
+                    youTubeMediaController.onSetPlayerStatus(StrawYouTubeMediaController.OnEventProperty.STATE_PAUSE);
+                } else {
+                    activePlayer.play();
+                    youTubeMediaController.onSetPlayerStatus(StrawYouTubeMediaController.OnEventProperty.STATE_PLAYING);
+                }
+            }
+        });*/
     }
 
     public interface DeveloperKey {

@@ -19,9 +19,9 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/youtube_player_play_btn" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/youtube_btn_play" />
 
         <SeekBar
             android:id="@+id/sysSeekBarVideo"
